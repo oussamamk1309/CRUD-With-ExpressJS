@@ -1,0 +1,40 @@
+<form action="/products/create" method="post">
+    <h3 class="text-center py-2 px-4 bg-secondary rounded mx-auto my-4 text-white">Add product</h3>
+    {{#if result.error}}
+        <div class="alert alert-danger text-center">
+            {{ result.message }}
+        </div>
+    {{/if}}
+    <div class="form-group">
+        <label for="name">Name : </label>
+        <input 
+            type="text" 
+            name="name" 
+            class="form-control {{#if result.name_error}}is-invalid{{/if}}" 
+            placeholder="Name" 
+            value="{{#if result.data}}{{ result.data.name }}{{/if}}">
+    </div>
+    <div class="form-group">
+        <label for="description">Description : </label>
+        <textarea 
+            name="description" 
+            cols="30" rows="5" 
+            class="form-control {{#if result.desc_error}}is-invalid{{/if}}" 
+            placeholder="Description"
+        >{{#if result.data}}{{ result.data.description }}{{/if}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="category">Category : </label>
+        <select name="categoryId" id="category" class="form-control {{#if result.cat_error}}is-invalid{{/if}}">
+            <option value="slct">Select a category</option>
+            {{#each categories}}
+                <option value="{{ _id }}">{{ name }}</option>
+            {{/each}}
+        </select>
+    </div>
+    <input type="hidden" name="updated_at" value="NULL">
+    <input type="hidden" name="deleted_at" value="NULL">
+    <div class="form-group">
+        <button type="submit" class="btn btn-block btn-primary"><i class="far fa-plus-square"></i> Create</button>
+    </div>
+</form>

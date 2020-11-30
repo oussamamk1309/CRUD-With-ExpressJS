@@ -1,0 +1,39 @@
+<form action="/products/{{#if result.productId}}{{result.productId}}{{else}}{{ product._id }}{{/if}}/edit?_method=PUT" method="POST">
+    <h3 class="text-center py-2 px-4 bg-secondary rounded mx-auto my-4 text-white">Edit product</h3>
+    {{#if result.error}}
+        <div class="alert alert-danger text-center">
+            {{ result.message }}
+        </div>
+    {{/if}}
+    <div class="form-group">
+        <label for="name">Name : </label>
+        <input 
+            type="text" 
+            name="name" 
+            class="form-control {{#if result.name_error}}is-invalid{{/if}}" 
+            placeholder="Name" 
+            value="{{#if result.data}}{{ result.data.name }}{{/if}}{{#if product}}{{product.name}}{{/if}}">
+    </div>
+    <div class="form-group">
+        <label for="description">Description : </label>
+        <textarea 
+            name="description" 
+            cols="30" rows="5" 
+            class="form-control {{#if result.desc_error}}is-invalid{{/if}}" 
+            placeholder="Description"
+        >{{#if result.data}}{{ result.data.description }}{{/if}}{{#if product}}{{product.description}}{{/if}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="category">Catgory : </label>
+        <select name="categoryId" id="category" class="form-control {{#if result.cat_error}}is-invalid{{/if}}">
+            <option value="slct">Select a category</option>
+            {{#each categories}}
+                <option value="{{ _id }}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+  <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+        <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-edit"></i> Edit</button>
+    </div>
+</form>

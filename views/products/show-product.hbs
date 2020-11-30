@@ -1,0 +1,25 @@
+<div class="w-100 mt-4 border rounded p-2">
+    <h3 class="text-center py-2 px-4 bg-secondary rounded mx-auto my-4 text-white">Details of product</h3>
+    <h4>{{ product.name }}</h4>
+    <p>{{ product.description }}</p>
+    <h6 class="d-inline mr-2">{{ category.name }}</h6> - Show category <a href="/categories/{{ product.categoryId }}">Here.</a><br>
+    <span class="my-2 ml-2 badge badge-pill badge-info">Created at : {{ product.created_at }}.</span><br>
+    <span class="my-2 ml-2 badge badge-pill badge-light">
+        {{#if product.updated_at }}
+            Updated at : {{ product.updated_at }}
+        {{else}}
+            No updates on this product.
+        {{/if}}
+    </span>
+    <div class="row">
+        <div class="col-sm">
+            <a class="btn btn-warning btn-block" href="/products/{{ product._id }}/edit"><i class="fas fa-edit"></i> Edit</a>
+        </div>
+        <div class="col-sm">
+            <form action="/products/{{ product._id }}/delete?_method=DELETE" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-danger btn-block" type="submit"><i class="fas fa-trash-alt"></i> Remove</button>
+            </form>
+        </div>
+    </div>
+</div>

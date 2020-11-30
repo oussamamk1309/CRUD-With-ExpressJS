@@ -1,0 +1,26 @@
+<html lang="en">
+    <head>
+        <!-- <meta> tags> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <nav class="top-navbar w-100 mb-1 shadow">
+            <ul class="mx-auto">
+                <li><a href="/dashboard"><i class="fas fa-tachometer-alt fa-fw"></i> Dashboard</a></li>
+                <li><a href="/products"><i class="fas fa-boxes fa-fw"></i> Products</a></li>
+                <li><a href="/categories"><i class="fas fa-project-diagram fa-fw"></i> Categories</a></li>
+                <li><a href="/options"><i class="fas fa-cog fa-fw"></i> Options</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            {{{ body }}}
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </body>
+</html>
